@@ -8,7 +8,7 @@ class RegisterDonor extends Component{
         return(
             <div className="RegisterDonor">
          <div class="row">
-    <div class="col s12 m6">
+    <div class="col s6 offset-m3">
       <div class="card grey darken-3">
         <div class="card-content white-text">
           <span class="card-title center">Register Yourself as a <br />D O N O R</span>
