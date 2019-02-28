@@ -24,6 +24,7 @@ class RegisterDonor extends Component{
     <Input name='group1' type='radio' value='Male' label='Male' />
     <Input name='group1' type='radio' value='Female' label='Female' />
 </Row>
+<Row><Col className='s12'><Input s={12} label="Enter City" icon="place" className="" validate /></Col></Row>
       <div class="row">
         <div class="input-field col s12">
         <i class="material-icons prefix">home</i>
