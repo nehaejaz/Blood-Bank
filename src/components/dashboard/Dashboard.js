@@ -1,8 +1,13 @@
 import React, {Component} from 'react'
+import DonorList from '../donors/DonorList'
 import {Table,Row,Col,Card,Input, Button,Modal} from 'react-materialize'
+import {connect} from 'react-redux'
 
 class Dashboard extends Component{
+ 
     render(){
+      const {donors}=this.props
+      console.log(donors)
     return(
         <div className="Dasboard">
         <Row>
@@ -13,38 +18,16 @@ class Dashboard extends Component{
     </Card>
   </Col>
   </Row>
-            <Table>
-  <thead>
-    <tr>
-      <th data-field="name">Name</th>
-      <th data-field="BloodType">Blood Type</th>
-      <th data-field="city">City</th>
-      <th data-field="city">Details</th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <tr>
-      <td>Alvin</td>
-      <td>B+</td>
-      <td>Karachi</td>
-      {/* <td>hello</td> */}
-      <td><Modal
-  header='Details'
-  trigger={<Button className='red lighten-1 white-text'>View Details</Button>}>
-<Row><h5>Full Name:</h5><p>Neha Ejaz</p></Row>
-<Row><h5>Blood Type:</h5><p>B+</p></Row>
-<Row><h5>Contact no:</h5><p>03312023210</p></Row>
-<Row><h5>Age:</h5><p>20</p></Row>
-<Row><h5>City:</h5><p>Karachi</p></Row>
-<Row><h5>Address:</h5><p>R-44, Ayaz Town Block-2 Gulshan-e-Iqbal</p></Row>
-</Modal></td>
-    </tr>
-  </tbody>
-</Table>
+  <DonorList donors={donors}/>
         </div>
     )
     }
 }
 
-export default Dashboard
+const mapStateToProps = (state) => {
+  return{
+    donors: state.donor.donors
+  }
+}
+
+export default connect(mapStateToProps)(Dashboard)
