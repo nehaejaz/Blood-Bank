@@ -1,7 +1,8 @@
 import React,{Component} from 'react';
 import './signup.css';
+import signup from '../../store/actions/authAction'
 import {Link} from 'react-router-dom'
-
+import {connect} from 'react-redux'
 class SignUp extends Component{
     state={
         firstName:'',
@@ -12,13 +13,10 @@ class SignUp extends Component{
     }
     submitHandler = (e) => {
         e.preventDefault()
-        console.log(this.state);
-    }
+        this.props.signup(this.state)
+      }
     changeHandler = (e) => {
         this.setState({
-            [e.target.id]:e.target.value,
-            [e.target.id]:e.target.value,
-            [e.target.id]:e.target.value,
             [e.target.id]:e.target.value,
         })
     }
@@ -78,5 +76,10 @@ class SignUp extends Component{
         )
     }
 }
+const mapDispatchToProps = (dispatch) =>{
+  return{
+    signup: (credential) => dispatch(signup(credential))
+  }
+}
 
-export default SignUp
+export default connect(null,mapDispatchToProps)(SignUp)
